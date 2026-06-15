@@ -1,0 +1,260 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cyan: #00d4ff;
+  --cyan-dim: rgba(0, 212, 255, 0.15);
+  --cyan-border: rgba(0, 212, 255, 0.25);
+  --cyan-glow: rgba(0, 212, 255, 0.5);
+  --navy: #020817;
+  --card-bg: rgba(4, 14, 40, 0.85);
+  --card-bg-hover: rgba(4, 14, 40, 0.95);
+  --purple: #7c3aed;
+  --green: #10b981;
+  --amber: #f59e0b;
+  --red: #ef4444;
+}
+
+* {
+  font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  direction: rtl;
+  background: var(--navy);
+  overflow: hidden;
+  color: #e2e8f0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: rgba(0, 212, 255, 0.05); }
+::-webkit-scrollbar-thumb { background: rgba(0, 212, 255, 0.3); border-radius: 2px; }
+
+/* Glass cards */
+.holo-card {
+  background: var(--card-bg);
+  border: 1px solid var(--cyan-border);
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+
+.holo-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.holo-card-purple {
+  background: var(--card-bg);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+}
+
+/* Glow effects */
+.glow-cyan { box-shadow: 0 0 20px rgba(0, 212, 255, 0.2), inset 0 0 20px rgba(0, 212, 255, 0.02); }
+.glow-cyan-strong { box-shadow: 0 0 30px rgba(0, 212, 255, 0.4); }
+.glow-green { box-shadow: 0 0 15px rgba(16, 185, 129, 0.3); }
+.glow-red { box-shadow: 0 0 15px rgba(239, 68, 68, 0.3); }
+.text-glow-cyan { text-shadow: 0 0 20px rgba(0, 212, 255, 0.8); }
+.text-glow-green { text-shadow: 0 0 15px rgba(16, 185, 129, 0.7); }
+
+/* No scrollbar utility */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Grid border lines */
+.grid-lines {
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Scan line animation */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+  animation: scanline 6s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Pulse rings */
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 1; }
+  70% { transform: scale(1.05); opacity: 0.6; }
+  100% { transform: scale(0.95); opacity: 1; }
+}
+.pulse-ring { animation: pulse-ring 2s ease-in-out infinite; }
+
+/* Blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.blink { animation: blink 1.5s ease-in-out infinite; }
+
+/* Globe rotation */
+@keyframes globe-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes globe-spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+@keyframes globe-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.globe-outer { animation: globe-spin 20s linear infinite; }
+.globe-mid { animation: globe-spin-slow 15s linear infinite; }
+.globe-inner { animation: globe-spin 30s linear infinite; }
+.globe-float { animation: globe-float 4s ease-in-out infinite; }
+
+/* Data stream */
+@keyframes stream {
+  0% { transform: translateY(0); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(60px); opacity: 0; }
+}
+
+/* Ticker scroll */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-inner {
+  display: flex;
+  animation: ticker-scroll 40s linear infinite;
+}
+
+/* Neon button */
+.neon-btn {
+  border: 1px solid var(--cyan-border);
+  background: var(--cyan-dim);
+  color: var(--cyan);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  backdrop-filter: blur(8px);
+}
+.neon-btn:hover {
+  background: rgba(0, 212, 255, 0.25);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+}
+
+/* Metric trend sparkline */
+.sparkline-up { color: #10b981; }
+.sparkline-down { color: #ef4444; }
+
+/* Sidebar item */
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: rgba(148, 163, 184, 0.8);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.sidebar-item:hover {
+  background: rgba(0, 212, 255, 0.08);
+  color: var(--cyan);
+}
+.sidebar-item.active {
+  background: rgba(0, 212, 255, 0.12);
+  color: var(--cyan);
+  border-right: 2px solid var(--cyan);
+}
+
+/* Agent card */
+.agent-card {
+  background: rgba(4, 14, 40, 0.9);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.agent-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 212, 255, 0.06) 0%, transparent 100%);
+}
+.agent-card:hover {
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Status dot */
+.status-active {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+  animation: blink 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Progress bar */
+.progress-bar {
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(0, 212, 255, 0.15);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--cyan), rgba(0, 212, 255, 0.6));
+  transition: width 0.5s ease;
+}
+
+/* Corner brackets decoration */
+.bracket-corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: rgba(0, 212, 255, 0.5);
+  border-style: solid;
+}
+.bracket-tl { top: 4px; right: 4px; border-width: 1px 0 0 1px; }
+.bracket-tr { top: 4px; left: 4px; border-width: 1px 1px 0 0; }
+.bracket-bl { bottom: 4px; right: 4px; border-width: 0 0 1px 1px; }
+.bracket-br { bottom: 4px; left: 4px; border-width: 0 1px 1px 0; }
+
+/* Recharts overrides */
+.recharts-tooltip-wrapper {
+  z-index: 100;
+}
