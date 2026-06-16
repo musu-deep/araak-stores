@@ -9,7 +9,7 @@ interface RightPanelProps {
 
 const channelData = [
   { name: 'المتجر الإلكتروني', value: 48, color: '#00d4ff' },
-  { name: 'بيك توك', value: 22, color: '#a78bfa' },
+  { name: 'تيك توك', value: 22, color: '#a78bfa' },
   { name: 'إنستغرام', value: 15, color: '#ec4899' },
   { name: 'سناب شات', value: 8, color: '#f59e0b' },
   { name: 'أخرى', value: 7, color: '#64748b' },
