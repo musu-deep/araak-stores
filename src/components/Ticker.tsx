@@ -1,5 +1,5 @@
 const tickerItems = [
-  { type: 'news', text: 'آخر الأخبار – تحليل المتنافسين – الربع الثاني 2025' },
+  { type: 'news', text: 'آخر التنبيهات – تحليل المتنافسين – الربع الثاني 2025' },
   { type: 'alert', text: 'منذ 5 ساعات – تقرير أداء الحملات التسويقية لشهر مايو' },
   { type: 'update', text: 'منذ 6 ساعات – تحديث خوارزمية التتبؤ بالمبيعات' },
   { type: 'news', text: 'منذ 6 ساعات – تقرير أداء الحملات التسويقية' },
@@ -18,7 +18,7 @@ export default function Ticker() {
     update: '#10b981',
   };
   const typeLabels: Record<string, string> = {
-    news: '● خبر',
+    news: '● معلومة',
     alert: '⚠ تنبيه',
     update: '✓ تحديث',
   };
@@ -28,7 +28,7 @@ export default function Ticker() {
       {/* Static label */}
       <div className="px-3 shrink-0 border-l border-cyan-500/20 h-full flex items-center bg-cyan-500/10">
         <span className="text-cyan-400 text-[9px] font-bold tracking-widest uppercase whitespace-nowrap">
-          آخر الأخبار
+          آخر التنبيهات
         </span>
       </div>
 
