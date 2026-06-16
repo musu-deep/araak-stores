@@ -11,7 +11,7 @@ interface SidebarProps {
 }
 
 const navItems = [
-  { id: 'command', label: 'الغرفة الرئيسية', sub: 'Command Deck', icon: LayoutGrid },
+  { id: 'command', label: 'اللوحة الرئيسية', sub: 'Command Deck', icon: LayoutGrid },
   { id: 'performance', label: 'لوحة الأداء', sub: 'Performance', icon: Activity },
   { id: 'sales', label: 'المبيعات', sub: 'Sales Intel', icon: ShoppingBag },
   { id: 'inventory', label: 'المخزون', sub: 'Inventory', icon: Package },
